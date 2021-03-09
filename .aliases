@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+# loaded by discovery
+
+on "darwin" && {
+    # should gls be installed by brew install coreutils
+    alias ls="gls --group-directories-first --color=always"
+}
+
+on "linux" && {
+    alias ls="ls --group-directories-first --color=always"
+}
+
+# git aliases
+alias gi="git init"
+
+# ls aliases
+alias ll="ls -l"
+
+# mkdir aliases
+alias mkdir="mkdir -p"
+alias md="mkdir"
+
+# rest
+alias clr="clear"
+
+alias reload="exec zsh"
+alias dotfiles="GIT_WORK_TREE=${HOME} GIT_DIR=${HOME}/.dotfiles git"

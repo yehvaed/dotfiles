@@ -1,0 +1,1 @@
+[ -f $HOME/.Xresources ] && xrdb $HOME/.Xresources

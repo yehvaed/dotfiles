@@ -1,0 +1,16 @@
+# include specific settings to this machine
+[init]
+    defaultBranch = main
+
+[status]
+	short = true
+
+[fetch]
+    prune = true
+
+[pretty]
+    default = %Cred%h%Creset -%C(green)%d%Creset %s %Cblue(%cr)
+
+[format]
+    pretty = default
+

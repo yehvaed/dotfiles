@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# loaded by discovery
+
+# prefer tu use vim if possible
+export EDITOR="$(which "vim" >& /dev/null && echo "vim" || echo "vi")"

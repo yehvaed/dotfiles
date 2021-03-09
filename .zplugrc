@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+# loaded by discovery - privileged
+
+# note: zsh-iife are only to visualy seprate part of code
+
+# plugins
+() {
+    () {
+        zplug "RobSis/zsh-completion-generator"
+        zstyle :plugin:zsh-completion-generator programs \
+            tr \
+            cat
+    }
+
+    () {
+        export YSU_HARDCORE=1
+        zplug "MichaelAquilina/zsh-you-should-use"
+    }
+
+    zplug "marlonrichert/zsh-autocomplete", defer:1
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
+    zplug "zpm-zsh/undollar"
+    zplug "Cloudstek/zsh-plugin-appup"
+}
+
+# completions
+() {
+    zplug "zsh-users/zsh-completions"
+    zplug "buonomo/yarn-completion"
+    zplug "greymd/docker-zsh-completion"
+}
+
+# aliases
+() {
+    zplug "mdumitru/git-aliases"
+}
+
+# theme
+() {
+    zplug "yehvaed/bashifying-zsh-theme", as:theme
+}
+
+# configs
+() {
+    () {
+        export HISTSIZE=50000
+        export SAVEHIST=10000
+        zplug "lib/history", from:oh-my-zsh
+    }
+}
+
+# bins
+() {
+    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+}

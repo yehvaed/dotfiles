@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+export ZPLUG_HOME=${HOME}/.zplug
+
+before() {
+    # we should fetch zplug first if it not exist yet
+    if [[ ! -d "$ZPLUG_HOME" ]]; then
+        local url="https://raw.githubusercontent.com/zplug/installer/master/installer.zsh"
+        curl -sL --proto-redir -all,https ${url} | zsh
+        while [[ ! -f "$ZPLUG_HOME/init.zsh" ]]; do sleep 1s; done
+    fi
+    
+    source "${ZPLUG_HOME}/init.zsh"
+}
+
+after() {
+    ! zplug check && {
+        zplug install
+    }
+    
+    zplug load 2> /dev/null
+}
+
