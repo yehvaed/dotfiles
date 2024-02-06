@@ -1,0 +1,79 @@
+#!/usr/bin/env zsh
+
+plugins() {
+    # ==> annexes
+    @source z-shell/z-a-{unscope,meta-plugins,linkbin,bin-gem-node,eval,readurl,submods}
+
+    # ==> command line widgets
+    @source wait trackbinds has'fzf' atinit"zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup" Aloxaf/fzf-tab
+    @source wait trackbinds has'fzf' joshskidmore/zsh-fzf-history-search
+    @source wait has'fzf' sunlei/zsh-ssh
+    @source hlissner/zsh-autopair
+    @source atinit'ABBR_QUIET=1' atinit'alias abbr="abbr -S"' olets/zsh-abbr
+    @source jeffreytse/zsh-vi-mode
+    @source @zsh-users+fast
+
+    # ==> aliases/functions/helpers for tools
+    @source wait has'git' OMZL::git.zsh
+    @source wait has'git' svn OMZP::gitfast
+    @source wait has'git' svn OMZP::git
+    @source wait has'gh'  svn OMZP::gh
+    @source wait has'terragrunt' jkavan/terragrunt-oh-my-zsh-plugin
+    @source wait has'terragrunt' has'terraform' pick'/dev/null' multisrc'.*_aliases' zer0beat/terraform-aliases
+    @source wait has'kubectl' svn OMZP::kubectl
+
+    # ==> config
+    @source atinit'HISTSIZE=5000000' atinit'SAVEHIST=1000000' atinit'HISTFILE=${HOME}/.zsh-history' OMZL::history.zsh
+    @source OMZL::completion.zsh
+
+    # ==> themes
+    @source atclone"cp config/p10k-robbyrussell.zsh ~/.p10k.zsh" @romkatv
+
+    # ==> misc
+    @source atinit'YSU_MESSAGE_POSITION=after' MichaelAquilina/zsh-you-should-use
+    @source zpm-zsh/undollar
+    @source ahmubashshir/zinsults
+}
+
+locals() {
+    sources ${XDG_DATA_HOME}/zsh/*(N)
+    source ${HOME}/.aliases
+}
+
+# ===>
+@source() {; zi lucid for $@; }
+sources() {; for file in "$@"; do source ${file}; done; }
+
+curl -sL init.zshell.dev > /tmp/zi-init-cache
+[[ -s "/tmp/zi-init-cache" ]] && mv /tmp/zi-init-cache ${HOME}/.cache/zi-init-cache
+source ${HOME}/.cache/zi-init-cache
+
+typeset -gAH ZI
+ZI[HOME_DIR]="${HOME}/.local/share/zi"
+ZI[COMPLETIONS_DIR]="${HOME}/.cache/completions"
+ZI[ZCOMPDUMP_PATH]="${HOME}/.zcompdump"
+ZPFX=${HOME}/.local
+
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
+# tools/data place
+export GOPATH="${XDG_DATA_HOME}/go"
+# used by a lot of frameworks
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME}"
+
+# misc
+export HOMEBREW_NO_AUTO_UPDATE=1
+export EDITOR="nvim"
+export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
+export FZF_DEFAULT_OPTS="--bind alt-j:preview-up,alt-k:preview-down"
+
+
+stty -ixon
+
+zzinit && plugins && locals
+[[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
+
+eval "$(zoxide init zsh)"
