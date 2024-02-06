@@ -2,3 +2,4 @@
 - hosts: localhost
   roles:
     - role: "@nvim/nvim-config"
+    - role: "@tmux/tmux-config"
