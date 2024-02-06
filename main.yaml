@@ -1,5 +1,5 @@
 ---
 - hosts: localhost
   roles:
-    - role: "@nvim/nvim-config"
-    - role: "@tmux/tmux-config"
+    - role: "nvim/nvim-config"
+    - role: "tmux/tmux-config"
