@@ -1,0 +1,5 @@
+- name: Install nvim
+  community.general.homebrew:
+    name: nvim
+    state: present
+  when: ansible_distribution == 'MacOSX'
