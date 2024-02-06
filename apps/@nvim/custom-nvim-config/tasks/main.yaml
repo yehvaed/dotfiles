@@ -1,4 +1,0 @@
-- name: Clone custom crafted neovim config
-  ansible.builtin.git:
-    repo: "git@github.com:yehvaed/nvim-config.git"
-    dest: "~/.config/nvim-custom"

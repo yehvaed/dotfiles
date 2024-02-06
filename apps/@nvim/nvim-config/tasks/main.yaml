@@ -1,0 +1,5 @@
+- name: Create symlink to neovim config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/nvim-custom"
+    dest: "~/.config/nvim-custom"
+    state: link

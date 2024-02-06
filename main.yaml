@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - role: "@nvim/custom-nvim-config"
+    - role: "@nvim/nvim-config"
