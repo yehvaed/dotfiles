@@ -1,0 +1,8 @@
+- name: Add nvims zsh helpers 
+  ansible.builtin.blockinfile:
+    path: ~/.gitconfig
+    marker: "# {mark} --> {{ role_name }}"
+    marker_begin: "start"
+    marker_end: "end"
+    block: "{{ lookup('ansible.builtin.file', 'files/gitconfig') }}"
+    create: true

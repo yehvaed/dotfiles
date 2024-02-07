@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   roles:
+    - role: "git/git-config"
     - role: "nvim/nvim-config"
     - role: "tmux/tmux-config"
     - role: "zsh/zsh-config"
