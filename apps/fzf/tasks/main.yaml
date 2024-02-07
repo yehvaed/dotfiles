@@ -1,0 +1,5 @@
+- name: Add fzf package
+  community.general.homebrew:
+    name: fzf
+    state: present
+  when: ansible_distribution == 'MacOSX'
