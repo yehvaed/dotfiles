@@ -75,5 +75,7 @@ stty -ixon
 
 zzinit && plugins && locals
 [[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
+[[ -f "${HOME}/.zshrc.ansible-managed" ]] && source "${HOME}/.zshrc.ansible-managed"
+
 
 eval "$(zoxide init zsh)"

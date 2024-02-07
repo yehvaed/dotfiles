@@ -3,3 +3,12 @@
     src: "{{ role_path }}/files/nvim-custom"
     dest: "~/.config/nvim-custom"
     state: link
+
+- name: Add nvims zsh helpers 
+  ansible.builtin.blockinfile:
+    path: ~/.zshrc.ansible-managed
+    marker: "# {mark} --> {{ role_name }}"
+    marker_begin: "start"
+    marker_end: "end"
+    block: "{{ lookup('ansible.builtin.file', 'files/nvim.zsh') }}"
+    create: true
