@@ -1,5 +1,8 @@
-- name: Create symlink to zshrc
+- name: Create symlink to zsh config files
   ansible.builtin.file:
-    src: "{{ role_path }}/files/zshrc"
-    dest: "~/.zshrc"
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "~/{{ item.dest }}"
     state: link
+  with_items:
+    - { src: "zshrc", dest: ".zshrc" }
+    - { src: "p10k.zsh", dest: ".p10k.zsh" }
