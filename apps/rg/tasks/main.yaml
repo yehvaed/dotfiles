@@ -1,0 +1,5 @@
+- name: Add rq package
+  community.general.homebrew:
+    name: ripgrep
+    state: present
+  when: ansible_distribution == 'MacOSX'

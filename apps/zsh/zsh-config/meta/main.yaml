@@ -1,3 +1,5 @@
 dependencies:
   - role: zsh/zsh
   - role: fzf
+  - role: eza
+  - role: rg

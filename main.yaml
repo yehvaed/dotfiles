@@ -5,3 +5,4 @@
     - role: "nvim/nvim-config"
     - role: "tmux/tmux-config"
     - role: "zsh/zsh-config"
+    - role: "wezterm/wezterm-config"

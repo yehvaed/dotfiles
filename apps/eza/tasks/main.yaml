@@ -1,0 +1,5 @@
+- name: Add eza package
+  community.general.homebrew:
+    name: eza
+    state: present
+  when: ansible_distribution == 'MacOSX'

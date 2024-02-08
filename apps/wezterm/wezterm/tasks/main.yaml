@@ -1,0 +1,5 @@
+- name: Add wezterm package
+  community.general.homebrew_cask:
+    name: wezterm
+    state: present
+  when: ansible_distribution == 'MacOSX'

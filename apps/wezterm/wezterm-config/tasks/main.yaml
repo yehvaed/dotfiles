@@ -1,0 +1,6 @@
+- name: Create symlink to wezterm config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/wezterm"
+    dest: "~/.config/wezterm"
+    state: link
+
