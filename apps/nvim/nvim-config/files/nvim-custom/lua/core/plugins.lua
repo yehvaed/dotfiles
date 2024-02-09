@@ -46,6 +46,17 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
+      require("which-key").setup()
+		end,
+	},
+
 	-- themes
 	{
 		"EdenEast/nightfox.nvim",
