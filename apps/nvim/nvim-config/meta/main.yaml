@@ -1,5 +1,5 @@
 dependencies:
   - role: nvim/nvim
-  - role: fzf
+  - role: fzf/fzf
   - role: eza
   - role: rg

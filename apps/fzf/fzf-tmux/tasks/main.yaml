@@ -1,0 +1,10 @@
+- name: Download fzf-tmux script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/junegunn/fzf/master/bin/fzf-tmux
+    dest: /usr/local/bin/fzf-tmux
+  when: ansible_distribution == 'MacOSX'
+
+- name: Make fzf-tmux executable
+  ansible.builtin.file:
+    dest: /usr/local/bin/fzf-tmux
+    mode: a+x
