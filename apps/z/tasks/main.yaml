@@ -1,0 +1,5 @@
+- name: Add z package
+  community.general.homebrew:
+    name: zoxide
+    state: present
+  when: ansible_distribution == 'MacOSX'

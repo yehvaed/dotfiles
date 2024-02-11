@@ -3,3 +3,4 @@ dependencies:
   - role: fzf/fzf
   - role: eza
   - role: rg
+  - role: z
