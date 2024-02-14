@@ -1,15 +1,6 @@
 return {
 	config = function()
 		require("telescope").setup({
-			defaults = vim.tbl_extend("force", 
-        require("telescope.themes").get_ivy(), {
-				sorting_strategy = "ascending",
-				layout_config = {
-					height = function(_, _, max_lines)
-						return max_lines
-					end,
-				},
-			}),
 			pickers = {
 				colorscheme = {
 					enable_preview = true,

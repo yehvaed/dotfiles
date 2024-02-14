@@ -6,9 +6,9 @@
 
 - name: Add tmux zsh helpers 
   ansible.builtin.blockinfile:
-    path: ~/.zshrc.ansible-managed
-    marker: "# {mark} --> {{ role_name }}"
-    marker_begin: "start"
-    marker_end: "end"
+    path: ~/.local/share/zsh/ansible-managed.zsh
+    marker: "# {mark} --> {{ role_name }} "
+    marker_begin: "@start"
+    marker_end: "@end"
     block: "{{ lookup('ansible.builtin.file', 'files/tmux.zsh') }}"
     create: true

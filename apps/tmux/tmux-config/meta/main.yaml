@@ -1,3 +1,4 @@
 dependencies:
   - role: tmux/tmux
   - role: fzf/fzf-tmux
+  - role: zsh/zsh

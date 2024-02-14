@@ -6,7 +6,7 @@
 
 - name: Add nvims zsh helpers 
   ansible.builtin.blockinfile:
-    path: ~/.zshrc.ansible-managed
+    path: ~/.local/share/zsh/ansible-managed.zsh
     marker: "# {mark} --> {{ role_name }}"
     marker_begin: "start"
     marker_end: "end"

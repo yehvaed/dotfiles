@@ -75,7 +75,35 @@ stty -ixon
 
 zzinit && plugins && locals
 [[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
-[[ -f "${HOME}/.zshrc.ansible-managed" ]] && source "${HOME}/.zshrc.ansible-managed"
+[[ -f "${HOME}/.local/share/zsh/ansible-managed.zsh" ]] && source "${HOME}/.local/share/zsh/ansible-managed.zsh"
 
+
+
+# TODO: find a way to integrate it into zoxide
+jump() {
+    local query="$@"
+    local paths=($(fd -t d))
+    locations=($(printf "%s\n" ${paths[@]} | fzf --select-1 --filter="${query}" --exact --reverse  || echo "."))
+    cd ${locations[1]}
+}
+alias j=jump
+
+up() {
+    local query="$@"
+    local current_dir=${PWD}
+    local paths=()
+
+    while [[ "${current_dir}" != "/" ]]; do
+      local parent_dir=$(dirname ${current_dir})
+
+      paths=(${paths[@]} ${parent_dir})
+      current_dir=${parent_dir}
+    done
+    
+    locations=($(printf "%s\n" ${paths[@]} | fzf --select-1 --filter="${query}" --exact --reverse  || echo "."))
+    cd ${locations[1]}
+}
+alias u=up
 
 eval "$(zoxide init zsh)"
+alias restart="exec zsh"
