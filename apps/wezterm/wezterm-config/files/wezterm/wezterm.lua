@@ -15,5 +15,7 @@ config.color_scheme = 'iTerm2 Default'
 config.hide_tab_bar_if_only_one_tab = true
 config.font = wezterm.font_with_fallback({"FiraCode Nerd Font Propo"})
 config.font_size = 13
+config.freetype_load_target = "HorizontalLcd"
+config.cell_width = 1.005
 -- and finally, return the configuration to wezterm
 return config
